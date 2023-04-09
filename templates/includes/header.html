@@ -1,0 +1,18 @@
+{% load static %}
+
+<div class="header__top">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12">
+        <nav class="header__menu">
+          <ul>
+            <li class="active"><a href="{% url 'kitchen:index' %}">Home</a></li>
+            <li><a href="{% url 'kitchen:dish-type-list' %}">Dish types</a></li>
+            <li><a href="{% url 'kitchen:dish-list' %}">Dishes</a></li>
+            <li><a href="{% url 'kitchen:cook-list' %}">Cooks</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
