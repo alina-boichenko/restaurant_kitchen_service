@@ -27,7 +27,9 @@ class Dish(models.Model):
     description = models.TextField()
     price = models.DecimalField(max_digits=5, decimal_places=2)
     dish_image = models.ImageField(null=True, blank=True, upload_to="images/")
-    dish_type = models.ForeignKey(DishType, on_delete=models.CASCADE)
+    dish_type = models.ForeignKey(
+        DishType, on_delete=models.CASCADE, related_name="dishes"
+    )
     cooks = models.ManyToManyField(
         settings.AUTH_USER_MODEL, related_name="dishes", blank=True
     )
