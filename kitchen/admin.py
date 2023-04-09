@@ -16,6 +16,7 @@ class CookAdmin(UserAdmin):
                 "Additional info",
                 {
                     "fields": (
+                        "email",
                         "first_name",
                         "last_name",
                         "years_of_experience",
@@ -28,6 +29,7 @@ class CookAdmin(UserAdmin):
 
 @admin.register(Dish)
 class DishAdmin(admin.ModelAdmin):
+    list_display = ("name", "price", "dish_type",)
     search_fields = ("name",)
     list_filter = ("price", "dish_type",)
 
