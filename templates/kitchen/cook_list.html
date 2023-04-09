@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}<title>Cooks</title>{% endblock %}
+
+{% block content %}
+  <h1>Cooks List</h1>
+  {% if cook_list %}
+    <div class="card-columns">
+        {% for cook in cook_list %}
+          <div class="card bg-light">
+            <a href="{% url 'kitchen:cook-detail' pk=cook.id %}">
+              <ul class="card-body text-center">
+                <li><strong>Username: </strong>{{ cook.username }}</li>
+                <li><strong>Full name: </strong>
+                  {{ cook.first_name }} {{ cook.last_name }}
+                </li>
+              </ul>
+            </a>
+          </div>
+        {% empty %}
+          <p>No cooks!</p>
+        {% endfor %}
+
+    </div>
+  {% endif %}
+{% endblock %}
