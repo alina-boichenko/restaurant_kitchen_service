@@ -3,7 +3,14 @@
 {% block title %}<title>Dish types</title>{% endblock %}
 
 {% block content %}
-  <h1>Dish Types</h1>
+  <div class="row">
+    <div class="col-lg-8 col-md-8">
+      <h1>Dish Types</h1>
+    </div>
+    <div class="col-lg-4 col-md-4">
+      <a class="site-btn btn btn-success" href="{% url 'kitchen:dish-type-create' %}">Create new</a>
+    </div>
+  </div>
   {% if dish_type_list %}
     {% for dish_type in dish_type_list %}
       <div class="alert alert-success"><a href="{% url 'kitchen:dish-type-detail' pk=dish_type.pk %}">
