@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load crispy_forms_filters %}
 
-{% block title %}<title>Register</title>{% endblock %}
+{% block title %}<title>{{ object|yesno:"Update,Register" }}</title>{% endblock %}
 
 {% block content %}
   <section class="vh-100">
@@ -15,7 +15,7 @@
           <form action="" method="post" novalidate>
             {% csrf_token %}
             {{ form|crispy }}
-            <input type="submit" class="site-btn btn btn-success" value="Register"/>
+            <input type="submit" class="site-btn btn btn-success" value="Submit"/>
             <a href="" class="site-btn btn btn-danger">Cancel</a>
           </form>
         </div>
