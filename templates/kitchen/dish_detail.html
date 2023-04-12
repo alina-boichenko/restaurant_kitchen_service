@@ -36,7 +36,7 @@
             <div class="single-post__recipe__details__option">
               <ul>
                 <li><a href="#" class="btn btn-warning"> Add to my dishes</a></li>
-                <li><a href="#" class="btn btn-success"> Update recipe</a></li>
+                <li><a href="{% url 'kitchen:dish-update' pk=dish.pk %}" class="btn btn-success"> Update recipe</a></li>
                 <li><a href="#" class="btn btn-danger"> Delete recipe</a></li>
               </ul>
             </div>
