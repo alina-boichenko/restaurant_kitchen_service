@@ -1,6 +1,9 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+from django.urls import reverse_lazy
+from django.views.generic import ListView, DetailView, CreateView
 
+from kitchen.forms import DishForm, CookCreationForm
 from kitchen.models import Cook, Dish, DishType
 
 
@@ -30,14 +33,29 @@ class DishTypeDetailView(DetailView):
     context_object_name = "dish_type"
 
 
+class DishTypeCreateView(LoginRequiredMixin, CreateView):
+    model = DishType
+    fields = "__all__"
+    template_name = "kitchen/dish_type_form.html"
+    success_url = reverse_lazy("kitchen:dish-type-list")
+
+
 class DishListView(ListView):
     model = Dish
     ordering = ["name"]
     paginate_by = 5
 
+    queryset = Dish.objects.prefetch_related("cooks")
+
 
 class DishDetailView(DetailView):
     model = Dish
+
+
+class DishCreateView(LoginRequiredMixin, CreateView):
+    model = Dish
+    form_class = DishForm
+    success_url = reverse_lazy("kitchen:dish-list")
 
 
 class CookListView(ListView):
@@ -48,3 +66,9 @@ class CookListView(ListView):
 class CookDetailView(DetailView):
     model = Cook
     queryset = Cook.objects.prefetch_related("dishes")
+
+
+class CookCreateView(CreateView):
+    model = Cook
+    form_class = CookCreationForm
+    success_url = reverse_lazy("kitchen:cook-list")
