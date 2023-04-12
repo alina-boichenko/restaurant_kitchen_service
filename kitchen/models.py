@@ -5,7 +5,7 @@ from kitchen_service import settings
 
 
 class Cook(AbstractUser):
-    years_of_experience = models.IntegerField()
+    years_of_experience = models.PositiveIntegerField()
 
     def __str__(self) -> str:
         return f"{self.first_name} {self.last_name}"
