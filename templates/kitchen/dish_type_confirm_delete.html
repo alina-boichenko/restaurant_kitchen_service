@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}<title>Delete dish type</title>{% endblock %}
+
+{% block content %}
+  <h1><small>Delete dish type</small></h1>
+  <h2 class="d-flex justify-content-center">Are you sure you want to delete dish type: {{ dish_type }}?</h2>
+  <h3 class="d-flex justify-content-center">Also remove all dishes that belong to this category.</h3>
+  <div class="d-flex justify-content-center">
+    <form action="" method="post">
+      {% csrf_token %}
+      <input type="submit" class="site-btn btn btn-success" value="Yes, delete"/>
+      <a href="{% url 'kitchen:dish-type-detail' pk=dish_type.pk %}" class="site-btn btn btn-danger">Cancel</a>
+    </form>
+  </div>
+{% endblock %}
