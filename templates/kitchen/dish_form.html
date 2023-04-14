@@ -6,11 +6,11 @@
 {% block content %}
   <h1><small>{{ object|yesno:"Update,Register" }} new dish</small></h1>
   <div class="d-flex justify-content-center">
-    <form action="" method="post" novalidate>
+    <form action="" method="post" enctype="multipart/form-data" novalidate>
       {% csrf_token %}
       {{ form|crispy }}
       <input type="submit" class="site-btn btn btn-success" value="Submit"/>
-      <a href="" class="site-btn btn btn-danger">Cancel</a>
+      <a class="site-btn btn btn-danger" href="{% url 'kitchen:dish-list' %}">Cancel</a>
     </form>
   </div>
 {% endblock %}
