@@ -5,7 +5,15 @@
 {% endblock %}
 
 {% block content %}
-  <h1>{{ dish_type.name }}</h1>
+  <div class="row">
+    <div class="col-lg-8 col-md-8">
+      <h1>{{ dish_type.name }}</h1>
+    </div>
+    <div class="col-lg-4 col-md-4">
+      <a class="site-btn btn btn-success" href="{% url 'kitchen:dish-type-update' pk=dish_type.pk %}">Update</a>
+      <a class="site-btn btn btn-danger" href="{% url 'kitchen:dish-type-delete' pk=dish_type.pk %}">Delete</a>
+    </div>
+  </div>
   <section class="categories categories-grid spad">
     <div class="categories__post">
       <div class="container">
