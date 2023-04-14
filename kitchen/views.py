@@ -1,7 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from kitchen.forms import DishForm, CookCreationForm
 from kitchen.models import Cook, Dish, DishType
@@ -47,6 +47,13 @@ class DishTypeUpdateView(LoginRequiredMixin, UpdateView):
     success_url = reverse_lazy("kitchen:dish-type-list")
 
 
+class DishTypeDeleteView(LoginRequiredMixin, DeleteView):
+    model = DishType
+    context_object_name = "dish_type"
+    template_name = "kitchen/dish_type_confirm_delete.html"
+    success_url = reverse_lazy("kitchen:dish-type-list")
+
+
 class DishListView(ListView):
     model = Dish
     ordering = ["name"]
@@ -71,6 +78,12 @@ class DishUpdateView(LoginRequiredMixin, UpdateView):
     success_url = reverse_lazy("kitchen:dish-list")
 
 
+class DishDeleteView(LoginRequiredMixin, DeleteView):
+    model = Dish
+    template_name = "kitchen/dish_confirm_delete.html"
+    success_url = reverse_lazy("kitchen:dish-list")
+
+
 class CookListView(ListView):
     model = Cook
     paginate_by = 6
@@ -89,5 +102,11 @@ class CookCreateView(CreateView):
 
 class CookUpdateView(LoginRequiredMixin, UpdateView):
     model = Cook
-    form_class = CookCreationForm
+    fields = ["first_name", "last_name", "email", "years_of_experience"]
+    success_url = reverse_lazy("kitchen:cook-list")
+
+
+class CookDeleteView(LoginRequiredMixin, DeleteView):
+    model = Cook
+    template_name = "kitchen/cook_confirm_delete.html"
     success_url = reverse_lazy("kitchen:cook-list")
