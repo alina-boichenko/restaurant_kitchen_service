@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% load crispy_forms_filters %}
 
-{% block title %}<title>{{ object|yesno:"Update,Register" }} new dish</title>{% endblock %}
+{% block title %}<title>{{ object|yesno:"Update,Create" }} new dish</title>{% endblock %}
 
 {% block content %}
-  <h1><small>{{ object|yesno:"Update,Register" }} new dish</small></h1>
+  <h1><small>{{ object|yesno:"Update,Create" }} new dish</small></h1>
   <div class="d-flex justify-content-center">
     <form action="" method="post" enctype="multipart/form-data" novalidate>
       {% csrf_token %}
