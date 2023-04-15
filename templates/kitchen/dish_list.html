@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load crispy_forms_filters %}
 
 {% block title %}
 <title>Dishes</title>
@@ -13,15 +14,18 @@
       <a class="site-btn btn btn-success" href="{% url 'kitchen:dish-create' %}">Create new</a>
     </div>
   </div>
+  <div class="input-group">
+    <form class="form-inline" action="" method="get">
+      {{ search_form|crispy }}
+      <input class="btn btn-outline-primary" type="submit" value="🔎">
+    </form>
+  </div>
   <section class="categories categories-grid spad">
     <div class="categories__post">
       <div class="container">
         <div class="categories__grid__post">
           <div class="row">
             <div class="col-lg-8 col-md-8">
-              <div class="breadcrumb__text">
-                <h2><span>Total count of recipes: {{ dish.all.count }}</span></h2>
-              </div>
 
               {% for dish in dish_list %}
                 <div class="categories__list__post__item">
