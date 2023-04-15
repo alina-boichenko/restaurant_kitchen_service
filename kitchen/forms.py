@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
-from django.core.validators import FileExtensionValidator
+from django.core.validators import validate_image_file_extension
 
 from kitchen.models import Cook, Dish
 
@@ -20,21 +20,13 @@ class CookCreationForm(UserCreationForm):
         )
 
 
-class ModifiedImageField(forms.ImageField):
-    image_validator = FileExtensionValidator(
-        allowed_extensions=["jpg"],
-        message="File extension not allowed. Allowed extensions include  .jpg"
-    )
-    default_validators = ["image_validator"]
-
-
 class DishForm(forms.ModelForm):
-    dish_image = ModifiedImageField()
     cooks = forms.ModelMultipleChoiceField(
         queryset=get_user_model().objects.all(),
         widget=forms.CheckboxSelectMultiple,
         required=False
     )
+    dish_image = forms.ImageField(validators=[validate_image_file_extension])
 
     class Meta:
         model = Dish
@@ -47,3 +39,30 @@ class DishForm(forms.ModelForm):
             raise ValidationError("Price must be greater than 0.")
 
         return price
+
+
+class DishTypeSearchForm(forms.Form):
+    name = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput(attrs={"placeholder": "Search by name..."})
+    )
+
+
+class DishSearchForm(forms.Form):
+    name = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput(attrs={"placeholder": "Search by name..."})
+    )
+
+
+class CookSearchForm(forms.Form):
+    username = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput(attrs={"placeholder": "Search by username..."})
+    )
