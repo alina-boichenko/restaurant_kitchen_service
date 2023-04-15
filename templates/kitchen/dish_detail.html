@@ -35,7 +35,11 @@
             <div class="single-post__recipe__details">
             <div class="single-post__recipe__details__option">
               <ul>
-                <li><a href="#" class="btn btn-warning"> Add to my dishes</a></li>
+                {% if dish in user.dishes.all %}
+                  <li><a href="{% url 'kitchen:add-dish' pk=dish.pk %}" class="btn btn-warning"> Delete from my dishes</a></li>
+                {% else %}
+                  <li><a href="{% url 'kitchen:add-dish' pk=dish.pk %}" class="btn btn-warning"> Add to my dishes</a></li>
+                {% endif %}
                 <li><a href="{% url 'kitchen:dish-update' pk=dish.pk %}" class="btn btn-success"> Update recipe</a></li>
                 <li><a href="{% url 'kitchen:dish-delete' pk=dish.pk %}" class="btn btn-danger"> Delete recipe</a></li>
               </ul>
