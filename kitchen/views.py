@@ -67,7 +67,7 @@ class DishTypeListView(ListView):
 
 class DishTypeDetailView(DetailView):
     model = DishType
-    queryset = DishType.objects.prefetch_related("dishes")
+    queryset = DishType.objects.prefetch_related("dishes", "dishes__cooks")
     template_name = "kitchen/dish_type_detail.html"
     context_object_name = "dish_type"
 
