@@ -23,7 +23,7 @@
               <div class="breadcrumb__text">
                 <h2><span>Total count of recipes: {{ dish_type.dishes.count }}</span></h2>
                 <div class="breadcrumb__option">
-                  <a href="#">Home</a>
+                  <a href="{% url 'kitchen:index' %}">Home</a>
                   <span>Recipes</span>
                 </div>
               </div>
@@ -40,7 +40,7 @@
                       <div class="categories__post__item__text">
                         <h3><a href="{% url 'kitchen:dish-detail' pk=dish.pk %}">{{ dish.name }}</a></h3>
                         <ul class="post__widget">
-                          <li>{{ dish.cooks.count }} people can cook{{ dish.cooks.count|pluralize }} this recipe</li>
+                          <li>{{ dish.cooks.count }} user{{ dish.cooks.count|pluralize }} can cook this recipe</li>
                           <li>price: {{ dish.price }}</li>
                         </ul>
                         <p><strong>Ingredients: </strong>{{ dish.ingredients }}</p>
