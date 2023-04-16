@@ -20,8 +20,8 @@
 4.  Hero Section
 5.  Service Section
 6.  Categories Section
-7.  Instagram Section
-8.  About Section
+7. 	About Section
+8.  Pagination
 9.  Contact
 10.  Footer Style
 -------------------------------------------------------------------*/
@@ -160,11 +160,6 @@ ol {
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: top center;
-}
-
-.spad {
-	padding-top: 100px;
-	padding-bottom: 100px;
 }
 
 .text-white h1,
@@ -1408,16 +1403,7 @@ ol {
 
 .categories__pagination a {
 	display: inline-block;
-	background: #f2f2f2;
-	color: #444444;
-	font-size: 16px;
-	font-weight: 600;
-	text-transform: uppercase;
-	padding: 12px 18px 10px;
-	margin-right: 6px;
-	-webkit-transition: all, 0.3s;
-	-o-transition: all, 0.3s;
-	transition: all, 0.3s;
+
 }
 
 .categories__pagination a:hover {
@@ -2441,10 +2427,19 @@ ol {
 }
 
 /*---------------------
+	Pagination
+-----------------------*/
+
+.pagination {
+	text-align: center;
+}
+
+/*---------------------
   Contact
 -----------------------*/
 
-.contact {
+.navigation {
+	display: inline-block;
 	padding-top: 0;
 }
 
@@ -2954,10 +2949,6 @@ ol {
 		-webkit-box-align: start;
 		-ms-flex-align: start;
 		align-items: flex-start;
-	}
-	.footer__instagram__item {
-		height: 180px;
-	}
 }
 
 /* Tablet Device = 768px */
@@ -2999,9 +2990,6 @@ ol {
 		-webkit-box-align: start;
 		-ms-flex-align: start;
 		align-items: flex-start;
-	}
-	.footer__instagram__item {
-		height: 180px;
 	}
 }
 
@@ -3087,9 +3075,6 @@ ol {
 		-ms-flex-align: start;
 		align-items: flex-start;
 	}
-	.footer__instagram__item {
-		height: 180px;
-	}
 }
 
 /* Small Device = 320px */
@@ -3167,4 +3152,4 @@ ol {
 		font-size: 100px;
 		line-height: 100px;
 	}
-}
+}}

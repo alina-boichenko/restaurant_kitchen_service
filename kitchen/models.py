@@ -5,13 +5,13 @@ from kitchen_service import settings
 
 
 class Cook(AbstractUser):
-    years_of_experience = models.PositiveIntegerField()
+    years_of_experience = models.PositiveIntegerField(null=True, blank=True)
 
     def __str__(self) -> str:
         return f"{self.first_name} {self.last_name}"
 
     class Meta:
-        ordering = ["years_of_experience"]
+        ordering = ["username"]
 
 
 class DishType(models.Model):
@@ -26,7 +26,12 @@ class Dish(models.Model):
     ingredients = models.TextField()
     description = models.TextField()
     price = models.DecimalField(max_digits=5, decimal_places=2)
-    dish_image = models.ImageField(null=True, blank=True, upload_to="images/")
+    dish_image = models.ImageField(
+        null=True,
+        blank=True,
+        upload_to="images/",
+        default="images/no_images_available.jpg"
+    )
     dish_type = models.ForeignKey(
         DishType, on_delete=models.CASCADE, related_name="dishes"
     )

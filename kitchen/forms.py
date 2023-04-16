@@ -26,7 +26,10 @@ class DishForm(forms.ModelForm):
         widget=forms.CheckboxSelectMultiple,
         required=False
     )
-    dish_image = forms.ImageField(validators=[validate_image_file_extension])
+    dish_image = forms.ImageField(
+        validators=[validate_image_file_extension],
+        required=False
+    )
 
     class Meta:
         model = Dish
