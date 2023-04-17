@@ -1,20 +1,46 @@
-# restaurant_kitchen_service
+# Restaurant Kitchen Service site
 
-DB Structure:
+## ✨ Restaurant-kitchen-service Project
+
+A Django project to manage the operation of a restaurant and improve communication between chefs in the kitchen.
+Each chef in your restaurant has their own profile, which contains information about the chef and the dishes he/she prepares. 
+
+## ✨ Installation:
+
+Python3 and Django must be already installed
+
+```shell
+git clone https://github.com/alina-boichenko/restaurant_kitchen_service.git
+cd restaurant_kitchen_service
+python3 -m venv venv
+venv\Scripts\activate (on Windows)
+source venv/bin/activate (on macOS)
+pip install -r requirement.txt
+python manage.py migrate
+python manage.py runserver  # starts Django Server
+```
+
+## ✨ Features
+* Authentication functionality for Athlete/User
+* Registration functionality for Athlete/User
+* From the website interface, you have access to all of your restaurant's recipes and the ability to create, edit, and delete them.
+* Possibility to appoint a responsible cook for preparing a dish.
+
+## ✨ DB Structure:
 
 ![Untitled Diagram drawio](https://user-images.githubusercontent.com/116642541/232430320-61d75d2d-8d5b-4362-b327-f10e66b2c332.png)
 
-Pages images:
-1. Login page:
+## ✨ Pages images:
+### Login page:
 ![Screenshot 2023-04-17 at 00 19 26](https://user-images.githubusercontent.com/116642541/232430678-6cac45f1-a11d-41a1-bac5-980879cb9916.png)
 
-2. Register page:
+### Register page:
 ![Screenshot 2023-04-17 at 00 21 53](https://user-images.githubusercontent.com/116642541/232430823-7b7d7529-c8d3-4249-bfae-36d9f2e47af7.png)
 
-3. Home page:
+### Home page:
 ![Screenshot 2023-04-17 at 00 19 15](https://user-images.githubusercontent.com/116642541/232422662-b6a0be43-6872-4ab5-98f4-38764cf2ae76.png)
 
-4. Other content:
+### Other content:
 
 ![Screenshot 2023-04-17 at 00 19 50](https://user-images.githubusercontent.com/116642541/232431368-76e8068b-614d-4899-8e57-286d04944cdb.png)
 
