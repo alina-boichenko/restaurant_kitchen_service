@@ -193,12 +193,14 @@ class PrivateTestsView(TestCase):
             dish_type=dish_type,
         )
 
-        url = reverse("kitchen:add-dish", args=[self.dish.pk])
-
-        result = self.client.get(url)
-        self.assertIn(self.user, self.dish.cooks.all())
+        result = self.client.post(reverse(
+            "kitchen:dish-add-or-delete", args=[self.dish.pk]
+        ))
         self.assertEqual(result.status_code, 302)
+        self.assertIn(self.user, self.dish.cooks.all())
 
-        result = self.client.get(url)
+        result = self.client.post(reverse(
+            "kitchen:dish-add-or-delete", args=[self.dish.pk]
+        ))
         self.assertEqual(result.status_code, 302)
         self.assertNotIn(self.user, self.dish.cooks.all())
