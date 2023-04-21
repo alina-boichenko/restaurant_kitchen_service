@@ -5,6 +5,9 @@
 A Django project to manage the operation of a restaurant and improve communication between chefs in the kitchen.
 Each chef in your restaurant has their own profile, which contains information about the chef and the dishes he/she prepares. 
 
+## ✨ Check it out!
+[Kitchen project deployed to Render](https://restaurant-kitchen-service-hzl5.onrender.com)
+
 ## ✨ Installation:
 
 Python3 and Django must be already installed
