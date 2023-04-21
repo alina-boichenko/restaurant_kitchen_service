@@ -39,7 +39,11 @@
                 <li><strong>First name: </strong>{{ cook.first_name }}</li>
                 <li><strong>Last name: </strong>{{ cook.last_name }}</li>
                 <li><strong>Email: </strong>{{ cook.email }}</li>
-                <li><strong>Years of experience: </strong>{{ cook.years_of_experience }}</li>
+                <li><strong>Years of experience: </strong>
+                  {% if cook.years_of_experience %}
+                    {{ cook.years_of_experience }}
+                  {% endif %}
+                </li>
                 <li><strong>Count of recipes {{ cook.first_name }}: </strong>{{ cook.dishes.all.count }}</li>
               </ul>
               <h3>Dishes: </h3>
