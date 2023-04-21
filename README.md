@@ -8,6 +8,12 @@ Each chef in your restaurant has their own profile, which contains information a
 ## ✨ Check it out!
 [Kitchen project deployed to Render](https://restaurant-kitchen-service-hzl5.onrender.com)
 
+Use the following test user to log in and check the functionality of the website:
+```shell
+username: test_user
+password: pass123word_test
+```
+
 ## ✨ Installation:
 
 Python3 and Django must be already installed
