@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load crispy_forms_filters %}
+
+{% block title %}<title>Dish types</title>{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-lg-8 col-md-8">
+      <h1>Dish Types</h1>
+    </div>
+    <div class="col-lg-4 col-md-4">
+      <a class="site-btn btn btn-success" href="{% url 'kitchen:dish-type-create' %}">Create new</a>
+    </div>
+  </div>
+  <div class="input-group">
+    <form class="form-inline" action="" method="get">
+      {{ search_form|crispy }}
+      <input class="btn btn-outline-primary" type="submit" value="🔎">
+    </form>
+  </div>
+  {% if dish_type_list %}
+    {% for dish_type in dish_type_list %}
+      <div class="alert alert-success"><a href="{% url 'kitchen:dish-type-detail' pk=dish_type.pk %}">
+        {{ dish_type.name }}
+      </a></div>
+    {% endfor %}
+  {% endif %}
+{% endblock %}

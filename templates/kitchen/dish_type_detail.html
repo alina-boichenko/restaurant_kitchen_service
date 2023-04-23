@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>{{ dish_type.name }}</title>
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-lg-8 col-md-8">
+      <h1>{{ dish_type.name }}</h1>
+    </div>
+    <div class="col-lg-4 col-md-4">
+      <a class="site-btn btn btn-success" href="{% url 'kitchen:dish-type-update' pk=dish_type.pk %}">Update</a>
+      <a class="site-btn btn btn-danger" href="{% url 'kitchen:dish-type-delete' pk=dish_type.pk %}">Delete</a>
+    </div>
+  </div>
+  <section class="categories categories-grid spad">
+    <div class="categories__post">
+      <div class="container">
+        <div class="categories__grid__post">
+          <div class="row">
+            <div class="col-lg-8 col-md-8">
+              <div class="breadcrumb__text">
+                <h2><span>Total count of recipes: {{ dish_type.dishes.count }}</span></h2>
+                <div class="breadcrumb__option">
+                  <a href="{% url 'kitchen:index' %}">Home</a>
+                  <span>Recipes</span>
+                </div>
+              </div>
+
+              {% for dish in dish_type.dishes.all %}
+                <div class="categories__list__post__item">
+                  <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                      <div class="categories__post__item__pic set-bg"
+                           data-setbg="{{ dish.dish_image.url }}">
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                      <div class="categories__post__item__text">
+                        <h3><a href="{% url 'kitchen:dish-detail' pk=dish.pk %}">{{ dish.name }}</a></h3>
+                        <ul class="post__widget">
+                          <li>{{ dish.cooks.count }} user{{ dish.cooks.count|pluralize }} can cook this recipe</li>
+                          <li>price: {{ dish.price }}</li>
+                        </ul>
+                        <p><strong>Ingredients: </strong>{{ dish.ingredients }}</p>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+{% endblock %}

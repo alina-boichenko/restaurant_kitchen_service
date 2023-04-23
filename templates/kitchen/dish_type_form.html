@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load crispy_forms_filters %}
+
+{% block title %}<title>{{ object|yesno:"Update,Create" }} new dish type</title>{% endblock %}
+
+{% block content %}
+  <h1><small>{{ object|yesno:"Update,Create" }} new dish type</small></h1>
+  <div class="d-flex justify-content-center">
+    <form action="" method="post" novalidate>
+      {% csrf_token %}
+      {{ form|crispy }}
+      <input type="submit" class="site-btn btn btn-success" value="Submit"/>
+      <a class="site-btn btn btn-danger" href="{% url 'kitchen:dish-type-list' %}">Cancel</a>
+    </form>
+  </div>
+{% endblock %}

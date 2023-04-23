@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load crispy_forms_filters %}
+
+{% block title %}
+<title>Dishes</title>
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-lg-8 col-md-8">
+      <h1>Dishes List</h1>
+    </div>
+    <div class="col-lg-4 col-md-4">
+      <a class="site-btn btn btn-success" href="{% url 'kitchen:dish-create' %}">Create new</a>
+    </div>
+  </div>
+  <div class="input-group">
+    <form class="form-inline" action="" method="get">
+      {{ search_form|crispy }}
+      <input class="btn btn-outline-primary" type="submit" value="🔎">
+    </form>
+  </div>
+  <section class="categories categories-grid spad">
+    <div class="categories__post">
+      <div class="container">
+        <div class="categories__grid__post">
+          <div class="row">
+            <div class="col-lg-8 col-md-8">
+
+              {% for dish in dish_list %}
+                <div class="categories__list__post__item">
+                  <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                      <div class="categories__post__item__pic set-bg"
+                           data-setbg="{{ dish.dish_image.url }}">
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                      <div class="categories__post__item__text">
+                        <h3><a href="{% url 'kitchen:dish-detail' pk=dish.pk %}">{{ dish.name }}</a></h3>
+                        <ul class="post__widget">
+                          <li>{{ dish.cooks.count }} chef{{ dish.cooks.count|pluralize }} can cook this recipe</li>
+                          <li>price: {{ dish.price }}</li>
+                        </ul>
+                        <p><strong>Ingredients: </strong>{{ dish.ingredients }}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
